@@ -216,7 +216,7 @@ if __name__ == '__main__':
     list_of_results_dicts = parmap.map(run, [n_interviews_per_spot]*N_runs, 
                                        n_spec_per_applicant=n_spec_per_applicant,
                                        denominator_variance_specialty_choice=denominator_variance_specialty_choice,
-                                       pm_pbar=True) 
+                                       pm_pbar=True, pm_chunksize=3) 
     for results_dict in list_of_results_dicts:
         append_to_csv(output_file, results_dict)    
     
