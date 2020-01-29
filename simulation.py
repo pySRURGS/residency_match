@@ -4,6 +4,8 @@ from copy import deepcopy
 import os 
 import sys
 import pdb
+import csv
+import multiprocessing as mp
 import argparse
 
 class Specialty(object):
@@ -98,6 +100,7 @@ class Match(object):
         total_spots = int(np.sum(list_specialty_spots_distribution))
         list_specialty_spots_distribution = np.array(list_specialty_spots_distribution)
         list_specialty_spots_distribution = [x + np.abs(np.random.normal(0, x/self.denominator_variance_specialty_choice)) for x in list_specialty_spots_distribution]
+        list_specialty_spots_distribution = [np.max(x, 0) for x in list_specialty_spots_distribution]
         list_specialty_spots_distribution = list_specialty_spots_distribution / np.sum(list_specialty_spots_distribution)
         # create the applicants 
         list_of_applicants = []
@@ -171,8 +174,18 @@ class Match(object):
         match_rate = number_matched/len(list_of_applicants)
         unfilled_spots = find_all_unfilled_spots(result, list_of_programs)
         n_applicants_no_interviews = len(applicants_without_interviews)
-        return (number_matched, number_unmatched, unfilled_spots, 
-                n_applicants_no_interviews, match_rate)
+        return {'number_matched': number_matched, 
+                'number_unmatched':number_unmatched, 
+                'unfilled_spots':unfilled_spots, 
+                'n_applicants_no_interviews':n_applicants_no_interviews, 
+                'match_rate':match_rate}
+
+def append_to_csv(file_path, my_dict):
+    with open(file_path, 'a', newline='') as file:
+        w = csv.DictWriter(file, my_dict.keys())
+        if file.tell() == 0:
+            w.writeheader()
+        w.writerow(my_dict)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -190,6 +203,10 @@ if __name__ == '__main__':
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
-    match = Match(n_interviews_per_spot, n_spec_per_applicant, 
-                  denominator_variance_specialty_choice)
-    match.generate()
+    for i in range(0,1000):
+        match = Match(n_interviews_per_spot, n_spec_per_applicant, 
+                      denominator_variance_specialty_choice)
+        results_dict = match.generate()
+        print(i)
+        append_to_csv(output_file, results_dict)
+        
