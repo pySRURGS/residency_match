@@ -203,7 +203,7 @@ if __name__ == '__main__':
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
-    for i in range(0,1000):
+    for i in range(0,100):
         match = Match(n_interviews_per_spot, n_spec_per_applicant, 
                       denominator_variance_specialty_choice)
         results_dict = match.generate()
