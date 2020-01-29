@@ -13,14 +13,15 @@ except ImportError:
     sh = Sh()
 
 files = ["10_2_0point2.csv", "2_2_0point2.csv", "20_2_0point2.csv", "10_2_10.csv","10_4_0point2.csv"]
-for file in files:
-    args = file.split('_')
-    arg0 = int(args[0])
-    arg1 = int(args[1])
-    arg2 = args[2]
-    arg2 = arg2[:-4]
-    if arg2 == '0point2':
-        arg2 = 0.2
-    else:
-        arg2 = float(arg2)
-    sh.python('simulation.py', arg0, arg1, arg2, file)
+if __name__ == '__main__':
+    for file in files:
+        args = file.split('_')
+        arg0 = int(args[0])
+        arg1 = int(args[1])
+        arg2 = args[2]
+        arg2 = arg2[:-4]
+        if arg2 == '0point2':
+            arg2 = 0.2
+        else:
+            arg2 = float(arg2)
+        sh.python('simulation.py', arg0, arg1, arg2, file)

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd 
-files = ["10_2_0point2.csv", "2_2_0point2.csv", "20_2_0point2.csv", "10_2_10.csv","10_4_0point2.csv"]
+from run_simulations import files
+print(files)
 box_plot_data = []
 for file in files:
     data = pd.read_csv(file)
