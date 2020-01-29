@@ -15,7 +15,10 @@ except ImportError:
 files = ["10_2_0point2.csv", "2_2_0point2.csv", "20_2_0point2.csv", "10_2_10.csv","10_4_0point2.csv"]
 if __name__ == '__main__':
     for file in files:
-        sh.rm(file)
+        try:
+            sh.rm(file)
+        except:
+            pass
         args = file.split('_')
         arg0 = int(args[0])
         arg1 = int(args[1])
