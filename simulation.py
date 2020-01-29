@@ -6,6 +6,8 @@ import sys
 import pdb
 import csv
 import multiprocessing as mp
+import parmap
+import tqdm
 import argparse
 
 class Specialty(object):
@@ -187,6 +189,13 @@ def append_to_csv(file_path, my_dict):
             w.writeheader()
         w.writerow(my_dict)
 
+def run(n_interviews_per_spot, n_spec_per_applicant, 
+                      denominator_variance_specialty_choice):
+    match = Match(n_interviews_per_spot, n_spec_per_applicant, 
+                      denominator_variance_specialty_choice)
+    results_dict = match.generate()
+    return results_dict
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog='simulation.py',
@@ -203,10 +212,11 @@ if __name__ == '__main__':
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
-    for i in range(0,100):
-        match = Match(n_interviews_per_spot, n_spec_per_applicant, 
-                      denominator_variance_specialty_choice)
-        results_dict = match.generate()
-        print(i)
-        append_to_csv(output_file, results_dict)
-        
+    N_runs = 10
+    list_of_results_dicts = parmap.map(run, [n_interviews_per_spot]*N_runs, 
+                                       n_spec_per_applicant=n_spec_per_applicant,
+                                       denominator_variance_specialty_choice=denominator_variance_specialty_choice,
+                                       pm_pbar=True) 
+    for results_dict in list_of_results_dicts:
+        append_to_csv(output_file, results_dict)    
+    
