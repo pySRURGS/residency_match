@@ -26,4 +26,4 @@ if __name__ == '__main__':
             arg2 = 0.2
         else:
             arg2 = float(arg2)
-        sh.python('simulation.py', arg0, arg1, arg2, file)
+        sh.python('simulation.py', arg0, arg1, arg2, file, _fg=True)
