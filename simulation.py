@@ -212,7 +212,7 @@ if __name__ == '__main__':
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
-    N_runs = 10
+    N_runs = 10000
     list_of_results_dicts = parmap.map(run, [n_interviews_per_spot]*N_runs, 
                                        n_spec_per_applicant=n_spec_per_applicant,
                                        denominator_variance_specialty_choice=denominator_variance_specialty_choice,
