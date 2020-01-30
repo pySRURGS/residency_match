@@ -189,8 +189,9 @@ def append_to_csv(file_path, my_dict):
             w.writeheader()
         w.writerow(my_dict)
 
-def run(n_interviews_per_spot, n_spec_per_applicant, 
+def run(seed, n_interviews_per_spot, n_spec_per_applicant, 
                       denominator_variance_specialty_choice):
+    np.random.seed(seed)
     match = Match(n_interviews_per_spot, n_spec_per_applicant, 
                       denominator_variance_specialty_choice)
     results_dict = match.generate()
@@ -213,7 +214,8 @@ if __name__ == '__main__':
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
     N_runs = 10000
-    list_of_results_dicts = parmap.map(run, [n_interviews_per_spot]*N_runs, 
+    seeds_list = list(range(0, N_runs))
+    list_of_results_dicts = parmap.map(run, seeds_list, n_interviews_per_spot=n_interviews_per_spot, 
                                        n_spec_per_applicant=n_spec_per_applicant,
                                        denominator_variance_specialty_choice=denominator_variance_specialty_choice,
                                        pm_pbar=True, pm_chunksize=3) 
