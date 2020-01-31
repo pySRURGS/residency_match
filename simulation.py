@@ -170,16 +170,15 @@ class Match(object):
             del program_prefs[key]
         capacities = {'program'+str(program._id): program._spots for program in list_of_programs}
         game = HospitalResident.create_from_dictionaries(applicant_prefs, program_prefs, capacities)
-        result = game.solve()        
+        result = game.solve()    
+        num_applicants = len(list_of_applicants)
         number_matched = sum_all_matched_applicants(result)
         number_unmatched = len(list_of_applicants) - number_matched
         match_rate = number_matched/len(list_of_applicants)
         unfilled_spots = find_all_unfilled_spots(result, list_of_programs)
         n_applicants_no_interviews = len(applicants_without_interviews)
-        return {'number_matched': number_matched, 
-                'number_unmatched':number_unmatched, 
-                'unfilled_spots':unfilled_spots, 
-                'n_applicants_no_interviews':n_applicants_no_interviews, 
+        return {'num_applicants': num_applicants,
+                'fraction_applicants_no_interviews':n_applicants_no_interviews/num_applicants, 
                 'match_rate':match_rate}
 
 def append_to_csv(file_path, my_dict):
@@ -220,5 +219,5 @@ if __name__ == '__main__':
                                        denominator_variance_specialty_choice=denominator_variance_specialty_choice,
                                        pm_pbar=True, pm_chunksize=3) 
     for results_dict in list_of_results_dicts:
-        append_to_csv(output_file, results_dict)    
+        append_to_csv(output_file, results_dict)
     
