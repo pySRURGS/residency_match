@@ -13,6 +13,8 @@ except ImportError:
     sh = Sh()
 
 files = ["10_2_0point2.csv", "2_2_0point2.csv", "20_2_0point2.csv", "10_2_10.csv","10_4_0point2.csv"]
+aliases = ['Baseline', 'Two interviews per spot','Twenty interviews per spot', 'Applicants choose specialties perfectly', 'Applicants apply to four specialties']
+
 if __name__ == '__main__':
     for file in files:
         sh.touch(file)
