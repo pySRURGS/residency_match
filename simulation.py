@@ -34,7 +34,7 @@ class Applicant(object):
                  n_specialties, n_spec_per_applicant, n_programs_per_specialty):
         self._id = applicant_id
         self._specialties_id = np.random.choice(list(range(0, n_specialties)), 
-                                                  size=(2), 
+                                                  size=(n_spec_per_applicant), 
                                                   replace=False, 
                                                   p=specialty_spots_distribution)
         self._specialties_id = self._specialties_id.tolist()
