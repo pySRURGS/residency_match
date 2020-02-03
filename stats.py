@@ -19,7 +19,7 @@ def main():
             results = [alias, column, df[column].mean(), df[column].median(), df[column].min(), 
                        df[column].max(), p_value]
             table.append(results)                
-    with open('stats.csv', 'w') as outputfile:
+    with open('stats.csv', 'w', newline='') as outputfile:
         writer = csv.writer(outputfile)
         for i in range(0,len(table)):
             writer.writerow(table[i])
