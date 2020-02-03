@@ -115,9 +115,10 @@ class Match(object):
         # assign the programs to which the applicants applied
         for i in range(0, n_applicants):
             applicant = list_of_applicants[i]
-            [spec1, spec2] = applicant._specialties_id
-            programs_applied = find_all_programs_for_specialty(list_of_programs, spec1)
-            programs_applied += find_all_programs_for_specialty(list_of_programs, spec2)
+            list_of_specialties_to_which_applicant_applied = applicant._specialties_id
+            programs_applied = []
+            for specialty in list_of_specialties_to_which_applicant_applied:
+                programs_applied += find_all_programs_for_specialty(list_of_programs, specialty)
             applicant._programs_to_which_applied = programs_applied
             for program_index in programs_applied:
                 program = list_of_programs[program_index]
