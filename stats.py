@@ -10,7 +10,7 @@ def main():
     table = []
     columns = ['num_applicants', 'fraction_applicants_no_interviews', 'match_rate']
     for column in columns:
-        for fileIter in range(0,len(files)):
+        for i in range(0,len(files)):
             myfile = files[i]
             alias = aliases[i]
             df_baseline = pandas.read_csv('10_2_0point2.csv')
