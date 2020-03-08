@@ -1,0 +1,6 @@
+tqdm 
+parmap 
+sh 
+matching 
+matplotlib 
+numpy
