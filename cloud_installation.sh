@@ -1,3 +1,5 @@
+# This is the setup script used to install requirements on cloud computing 
+# services.
 sudo apt update
 sudo apt install python3
 sudo apt install python3-pip
