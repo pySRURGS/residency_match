@@ -1,5 +1,8 @@
 # residency_match
 
+[![Build Status](https://travis-ci.org/pySRURGS/nlp_ml.svg?branch=master)](https://travis-ci.org/pySRURGS/nlp_ml)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
 This software simulates the medical residency match. 
 In these simulations, there are 10 specialties, and for each specialty there are 10 programs.
 Each specialty has a typical program size, and this is used to generate programs randomly.
