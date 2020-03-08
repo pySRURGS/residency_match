@@ -108,7 +108,8 @@ class Match(object):
             list_specialty_spots_distribution.append(n_spots)
         total_spots = int(np.sum(list_specialty_spots_distribution))
         list_specialty_spots_distribution = np.array(list_specialty_spots_distribution)
-        list_specialty_spots_distribution = [x + np.abs(np.random.normal(0, x/self.denominator_variance_specialty_choice)) for x in list_specialty_spots_distribution]
+        list_specialty_spots_distribution = [x + np.abs(np.random.normal(0, x/self.denominator_variance_specialty_choice)) 
+                                             for x in list_specialty_spots_distribution]
         list_specialty_spots_distribution = [np.max(x, 0) for x in list_specialty_spots_distribution]
         list_specialty_spots_distribution = list_specialty_spots_distribution / np.sum(list_specialty_spots_distribution)
         # create the applicants 
@@ -211,7 +212,8 @@ if __name__ == '__main__':
     parser.add_argument("n_interviews_per_spot", help="the number of interviews for each residency spot", type=int)
     parser.add_argument("n_spec_per_applicant", help="the number of specialties to which applicants apply", type=int)
     parser.add_argument("denominator_variance_specialty_choice", help="a value which determines variability in applicants' specialty choice. smaller values mean more variance.")
-    parser.add_argument("output_file", help="the file to append the results of the run")    
+    parser.add_argument("output_file", help="the file to append the results of the run")
+    parser.add_argument("n_runs", help="the number of repetitions in this set of simulations", type=int)
     if len(sys.argv) < 4:
         parser.print_usage()
         sys.exit(1)
@@ -220,7 +222,7 @@ if __name__ == '__main__':
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
     denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
     output_file = arguments.output_file
-    N_runs = 10000
+    N_runs = arguments.n_runs
     seeds_list = list(range(0, N_runs))
     list_of_results_dicts = parmap.map(run, seeds_list, n_interviews_per_spot=n_interviews_per_spot, 
                                        n_spec_per_applicant=n_spec_per_applicant,
