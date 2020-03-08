@@ -49,4 +49,5 @@ if __name__ == '__main__':
             arg2 = 0.2
         else:
             arg2 = float(arg2)
-        sh.python3('residency_match.py', arg0, arg1, arg2, file, _fg=True)
+        n_runs = 10000
+        sh.python3('residency_match.py', arg0, arg1, arg2, n_runs, file, _fg=True)
