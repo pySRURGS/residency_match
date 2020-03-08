@@ -1,3 +1,7 @@
+#
+# After running `run_simulations.py`, this script is used to generate the plots 
+#
+
 import matplotlib.pyplot as plt
 import pandas as pd 
 import numpy as np
