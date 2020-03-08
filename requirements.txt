@@ -1,6 +1,6 @@
-tqdm 
-parmap 
-sh 
-matching 
-matplotlib 
-numpy
+tqdm==4.43.0
+parmap==1.5.2
+sh==1.12.14
+matching==1.2.1
+matplotlib==3.2.0
+numpy==1.18.1
