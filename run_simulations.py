@@ -36,7 +36,7 @@ aliases = ['Baseline', 'Two interviews per spot','Twenty interviews per spot',
            'Applicants apply to four specialties', 
            'Applicants apply to one specialty']
 
-if __name__ == '__main__':
+if __name__ == '__main__':    
     for file in files:
         sh.touch(file)
         sh.rm(file)
