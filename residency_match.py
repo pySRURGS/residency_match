@@ -1,3 +1,10 @@
+#
+# residency_match.py
+# (C) Sohrab Towfighi 2020
+# Licence: GPL v 3.0
+# 
+# Run the script using `python residency_match.py -h` to see the help docs
+
 from matching.games import HospitalResident
 import numpy as np
 from copy import deepcopy
@@ -199,7 +206,7 @@ def run(seed, n_interviews_per_spot, n_spec_per_applicant,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        prog='simulation.py',
+        prog='residency_match.py',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("n_interviews_per_spot", help="the number of interviews for each residency spot", type=int)
     parser.add_argument("n_spec_per_applicant", help="the number of specialties to which applicants apply", type=int)
