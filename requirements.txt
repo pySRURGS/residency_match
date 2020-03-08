@@ -4,3 +4,5 @@ sh==1.12.14
 matching==1.2.1
 matplotlib==3.2.0
 numpy==1.18.1
+pandas==1.0.1
+scipy==1.4.1
