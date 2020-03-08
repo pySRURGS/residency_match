@@ -1,4 +1,4 @@
-# pyResidencyMatch
+# residency_match
 
 This software simulates the medical residency match. 
 In these simulations, there are 10 specialties, and for each specialty there are 10 programs.
