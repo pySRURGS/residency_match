@@ -1,3 +1,20 @@
+#
+# This script wraps around `residency_match.py`, runs several sets of simulations,
+# and then saves the results to files.
+#
+# Each set of simulations is described using a file name and a corresponding 
+# alias, which is a name used to describe the simulation set in the plot we generate
+# using `make_plots.py`.
+#
+# SPECIFYING A SET OF SIMULATIONS
+# The parameters used in the simulation set are specified in the filename.
+# The parameters are separated by an underscore. For example, 10_2_0point2.csv
+# details the case where there are `10` interviews per residency spot, applicants apply to
+# all programs in `2` specialties, and the probability distribution determining specialty
+# preference has noise equal to number of spots in a given specialty divided by `0.2`.
+#
+# Sohrab Towfighi 2020
+#
 import os
 import sys
 import pdb
