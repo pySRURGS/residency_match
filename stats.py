@@ -1,3 +1,8 @@
+#
+# After running `run_simulations.py`, use this file to generate a `stats.csv`
+# file of summary statistics.
+#
+
 import os 
 import csv 
 import pandas 
