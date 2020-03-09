@@ -2,12 +2,7 @@
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
-This software simulates the medical residency match. 
-
-## Default settings
-- 10 specialties
-- For each specialty there are 10 programs
-- The ratio of applicants to programs is 1 to 1
+This software simulates the medical residency match. It does so by spawning 10 randomly generated specialties, and for each specialty it generates 10 programs. Each specialty has a typical number of spots per program, which is randomly assigned a value between 1 and 50. The number of applicants is forced to equal the number of program spots. 
 
 ## Getting Started
 
