@@ -1,6 +1,7 @@
 # residency_match
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Coverage Status](https://coveralls.io/repos/github/pySRURGS/residency_match/badge.svg?branch=master)](https://coveralls.io/github/pySRURGS/residency_match?branch=master)
 
 This software simulates the medical residency match. It does so by spawning 10 randomly generated specialties, and for each specialty it generates 10 programs. Each specialty has a typical number of spots per program, which is randomly assigned a value between 1 and 50. The number of applicants is forced to equal the number of program spots. 
 
