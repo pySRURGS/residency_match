@@ -26,3 +26,11 @@ pip install -r requirements.txt --user
 ### Running the Simulations
 
 You can run a quick run of the entire process by running `python3 test.py`, which executes the entire process with only 10 repetitions per set. The figure is generated in `figure.png` and the statistics spreadsheet is generated in `stats.csv`
+
+## Author
+
+**Sohrab Towfighi**
+
+## License
+
+This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) file for details
