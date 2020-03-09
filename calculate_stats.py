@@ -18,6 +18,7 @@ def main():
         for i in range(0,len(files)):
             myfile = files[i]
             alias = aliases[i]
+            alias = alias.replace('\n', ' ')
             df_baseline = pandas.read_csv('10_2_0point2.csv')
             df = pandas.read_csv(myfile)
             p_value = sc.ttest_ind(df[column], df_baseline[column], equal_var=False).pvalue
