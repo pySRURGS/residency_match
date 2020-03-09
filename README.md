@@ -23,8 +23,6 @@ cd residency_match
 pip install -r requirements.txt --user
 ```
 
-### Command line help
+### Running the Simulations
 
-```
-python3 simulation.py -h
-```
+You can run a quick run of the entire process by running `python3 test.py`, which executes the entire process with only 10 repetitions per set.
