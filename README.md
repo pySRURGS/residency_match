@@ -7,7 +7,7 @@ This software simulates the medical residency match. It does so by spawning 10 r
 
 ## Getting Started
 
-The main script is `simulation.py`. Download the repository and run it using python3.6 via a terminal.
+The main script is `residency_match.py`. Download the repository and run the computations using python3.6 via a terminal.
 
 ### Prerequisites
 
