@@ -36,7 +36,12 @@ aliases = ['Baseline', 'Two interviews per spot','Twenty interviews per spot',
            'Applicants apply to four specialties', 
            'Applicants apply to one specialty']
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    if args[0] == 'test':
+        n_runs = 10
+    else:
+        n_runs = 10000
     for file in files:
         sh.touch(file)
         sh.rm(file)
@@ -49,5 +54,4 @@ if __name__ == '__main__':
             arg2 = 0.2
         else:
             arg2 = float(arg2)
-        n_runs = 10000
         sh.python3('residency_match.py', arg0, arg1, arg2, n_runs, file, _fg=True)
