@@ -27,6 +27,37 @@ pip install -r requirements.txt --user
 
 You can run a quick run of the entire process by running `python3 test.py`, which executes the entire process with only 10 repetitions per set. Windows users can run `test.sh` instead of `test.py`, since the `sh` module is only available on Linux. The figure is generated in `figure.png` and the statistics spreadsheet is generated in `stats.csv`.
 
+### Running a Single Simulation
+
+You can use `residency_match.py` to run a single simulation. 
+
+The manual for its command line interface's usage can be generated using `python residency_match.py -h`, which should printout the following:
+
+```
+usage: residency_match.py [-h] [-n_interviews_per_spot N_INTERVIEWS_PER_SPOT]
+                          [-n_spec_per_applicant N_SPEC_PER_APPLICANT]
+                          [-denominator_variance_specialty_choice DENOMINATOR_VARIANCE_SPECIALTY_CHOICE]
+                          [-n_runs N_RUNS]
+                          output_file
+
+positional arguments:
+  output_file           the file to append the results of the run
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n_interviews_per_spot N_INTERVIEWS_PER_SPOT
+                        the number of interviews for each residency spot
+                        (default: 10)
+  -n_spec_per_applicant N_SPEC_PER_APPLICANT
+                        the number of specialties to which applicants apply
+                        (default: 2)
+  -denominator_variance_specialty_choice DENOMINATOR_VARIANCE_SPECIALTY_CHOICE
+                        a value which determines variability in applicants'
+                        specialty choice. smaller values mean more variance.
+                        (default: 0.2)
+  -n_runs N_RUNS        the number of repetitions in this set of simulations
+```
+
 ## Author
 
 **Sohrab Towfighi**
