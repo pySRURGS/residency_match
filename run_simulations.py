@@ -60,4 +60,4 @@ if __name__ == '__main__':
             arg2 = 0.2
         else:
             arg2 = float(arg2)
-        sh.python('residency_match.py', arg0, arg1, arg2, n_runs, file, _fg=True)
+        sh.python3('residency_match.py', arg0, arg1, arg2, n_runs, file, _fg=True)
