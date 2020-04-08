@@ -59,7 +59,7 @@ if __name__ == '__main__':
         if denominator_variance_specialty_choice == '0point2':
             denominator_variance_specialty_choice = 0.2
         else:
-            arg2 = float(arg2)
+            denominator_variance_specialty_choice = float(denominator_variance_specialty_choice)
         sh.python3('residency_match.py', '-n_interviews_per_spot', n_interviews_per_spot, 
                                          '-n_spec_per_applicant', n_spec_per_applicant, 
                                          '-denominator_variance_specialty_choice', denominator_variance_specialty_choice, 
