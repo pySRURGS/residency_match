@@ -209,10 +209,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog='residency_match.py',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("n_interviews_per_spot", help="the number of interviews for each residency spot", type=int)
-    parser.add_argument("n_spec_per_applicant", help="the number of specialties to which applicants apply", type=int)
-    parser.add_argument("denominator_variance_specialty_choice", help="a value which determines variability in applicants' specialty choice. smaller values mean more variance.")
-    parser.add_argument("n_runs", help="the number of repetitions in this set of simulations", type=int)
+    parser.add_argument("n_interviews_per_spot", help="the number of interviews for each residency spot", type=int, default=10)
+    parser.add_argument("n_spec_per_applicant", help="the number of specialties to which applicants apply", type=int, default=2)
+    parser.add_argument("denominator_variance_specialty_choice", help="a value which determines variability in applicants' specialty choice. smaller values mean more variance.", default=0.2)
+    parser.add_argument("n_runs", help="the number of repetitions in this set of simulations", type=int, default=10)
     parser.add_argument("output_file", help="the file to append the results of the run")           
     if len(sys.argv) < 2:
         parser.print_usage()
