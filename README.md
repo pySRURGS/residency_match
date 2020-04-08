@@ -66,6 +66,8 @@ optional arguments:
 
 This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) file for details
 
-## Contributing / Getting Help
+## Community
 
-Feel free to make an issue and we can discuss.
+If you would like to contribute to the project or you need help, then please create an issue.
+
+With regards to community suggested changes, I would comment as to whether it would be within the scope of the project to include the suggested changes. If both parties are in agreement, whomever is interested in developing the changes can make a pull request, or I will implement the suggested changes.
