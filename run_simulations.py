@@ -52,12 +52,16 @@ if __name__ == '__main__':
         sh.touch(file)
         sh.rm(file)
         args = file.split('_')
-        arg0 = int(args[0])
-        arg1 = int(args[1])
-        arg2 = args[2]
-        arg2 = arg2[:-4]
-        if arg2 == '0point2':
-            arg2 = 0.2
+        n_interviews_per_spot = int(args[0])
+        n_spec_per_applicant = int(args[1])
+        denominator_variance_specialty_choice = args[2]
+        denominator_variance_specialty_choice = denominator_variance_specialty_choice[:-4]
+        if denominator_variance_specialty_choice == '0point2':
+            denominator_variance_specialty_choice = 0.2
         else:
             arg2 = float(arg2)
-        sh.python3('residency_match.py', arg0, arg1, arg2, n_runs, file, _fg=True)
+        sh.python3('residency_match.py', '-n_interviews_per_spot', n_interviews_per_spot, 
+                                         '-n_spec_per_applicant', n_spec_per_applicant, 
+                                         '-denominator_variance_specialty_choice', denominator_variance_specialty_choice, 
+                                         '-n_runs', n_runs, 
+                                         file, _fg=True)
