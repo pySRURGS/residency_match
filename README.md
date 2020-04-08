@@ -25,7 +25,7 @@ pip install -r requirements.txt --user
 
 ### Running the Simulations
 
-You can run a quick run of the entire process by running `python3 test.py`, which executes the entire process with only 10 repetitions per set. The figure is generated in `figure.png` and the statistics spreadsheet is generated in `stats.csv`
+You can run a quick run of the entire process by running `python3 test.py`, which executes the entire process with only 10 repetitions per set. Windows users can run `test.sh` instead of `test.py`, since the `sh` module is only available on Linux. The figure is generated in `figure.png` and the statistics spreadsheet is generated in `stats.csv`.
 
 ## Author
 
