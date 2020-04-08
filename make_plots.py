@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import numpy as np
 from run_simulations import files, aliases
-print(files)
+
 plt.rcParams.update({'font.size': 8})
 box_plot_data = []
 for file in files:

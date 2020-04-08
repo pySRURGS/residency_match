@@ -75,14 +75,14 @@ def find_all_unfilled_spots(result_dict, programs_list):
 
 class Match(object):
     def __init__(self, n_interviews_per_spot, n_spec_per_applicant, 
-                  denominator_variance_specialty_choice):        
+                  specialty_choice_stddev_multiplier):        
         # GLOBAL VARIABLES
         self.n_specialties = 10
         self.n_spec_per_applicant = n_spec_per_applicant
         self.n_interviews_per_spot = n_interviews_per_spot
         self.n_programs_per_specialty = 10
         self.n_programs = self.n_specialties*self.n_programs_per_specialty
-        self.denominator_variance_specialty_choice = denominator_variance_specialty_choice
+        self.specialty_choice_stddev_multiplier = specialty_choice_stddev_multiplier
     
     def generate(self):
         # create the specialties 
@@ -108,7 +108,7 @@ class Match(object):
             list_specialty_spots_distribution.append(n_spots)
         total_spots = int(np.sum(list_specialty_spots_distribution))
         list_specialty_spots_distribution = np.array(list_specialty_spots_distribution)
-        list_specialty_spots_distribution = [x + np.abs(np.random.normal(0, x/self.denominator_variance_specialty_choice)) 
+        list_specialty_spots_distribution = [x + np.abs(np.random.normal(0, x*self.specialty_choice_stddev_multiplier)) 
                                              for x in list_specialty_spots_distribution]
         list_specialty_spots_distribution = [np.max(x, 0) for x in list_specialty_spots_distribution]
         list_specialty_spots_distribution = list_specialty_spots_distribution / np.sum(list_specialty_spots_distribution)
@@ -198,10 +198,10 @@ def append_to_csv(file_path, my_dict):
         w.writerow(my_dict)
 
 def run(seed, n_interviews_per_spot, n_spec_per_applicant, 
-                      denominator_variance_specialty_choice):
+                      specialty_choice_stddev_multiplier):
     np.random.seed(seed)
     match = Match(n_interviews_per_spot, n_spec_per_applicant, 
-                      denominator_variance_specialty_choice)
+                      specialty_choice_stddev_multiplier)
     results_dict = match.generate()
     return results_dict
 
@@ -217,8 +217,8 @@ if __name__ == '__main__':
                         type=int,
                         default=2, 
                         help="the number of specialties to which applicants apply")
-    parser.add_argument("-denominator_variance_specialty_choice", 
-                        default=0.2,
+    parser.add_argument("-specialty_choice_stddev_multiplier", 
+                        default=5,
                         help="a number value which determines variability in applicants' specialty choice. smaller values mean more variance.")
     parser.add_argument("-n_runs", 
                         type=int, 
@@ -231,13 +231,13 @@ if __name__ == '__main__':
     arguments = parser.parse_args()
     n_interviews_per_spot = int(arguments.n_interviews_per_spot)
     n_spec_per_applicant = int(arguments.n_spec_per_applicant)
-    denominator_variance_specialty_choice = float(arguments.denominator_variance_specialty_choice)
+    specialty_choice_stddev_multiplier = float(arguments.specialty_choice_stddev_multiplier)
     output_file = arguments.output_file
     N_runs = arguments.n_runs
     seeds_list = list(range(0, N_runs))
     list_of_results_dicts = parmap.map(run, seeds_list, n_interviews_per_spot=n_interviews_per_spot, 
                                        n_spec_per_applicant=n_spec_per_applicant,
-                                       denominator_variance_specialty_choice=denominator_variance_specialty_choice,
+                                       specialty_choice_stddev_multiplier=specialty_choice_stddev_multiplier,
                                        pm_pbar=True, pm_chunksize=3) 
     for results_dict in list_of_results_dicts:
         append_to_csv(output_file, results_dict)

@@ -11,6 +11,8 @@ import scipy.stats as sc
 from run_simulations import files, aliases
 import pdb
 
+baseline_csv = '10_2_5.csv' # this is the baseline case
+
 def main():
     table = []
     columns = ['num_applicants', 'fraction_applicants_no_interviews', 'match_rate']
@@ -19,7 +21,7 @@ def main():
             myfile = files[i]
             alias = aliases[i]
             alias = alias.replace('\n', ' ')
-            df_baseline = pandas.read_csv('10_2_0point2.csv')
+            df_baseline = pandas.read_csv(baseline_csv)
             df = pandas.read_csv(myfile)
             p_value = sc.ttest_ind(df[column], df_baseline[column], equal_var=False).pvalue
             results = [alias, column, df[column].mean(), df[column].median(), df[column].min(), 

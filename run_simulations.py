@@ -1,20 +1,13 @@
-#
-# This script wraps around `residency_match.py`, runs several sets of simulations,
-# and then saves the results to files.
-#
-# Each set of simulations is described using a file name and a corresponding 
-# alias, which is a name used to describe the simulation set in the plot we generate
-# using `make_plots.py`.
-#
-# SPECIFYING A SET OF SIMULATIONS
-# The parameters used in the simulation set are specified in the filename.
-# The parameters are separated by an underscore. For example, 10_2_0point2.csv
-# details the case where there are `10` interviews per residency spot, applicants apply to
-# all programs in `2` specialties, and the probability distribution determining specialty
-# preference has noise equal to number of spots in a given specialty divided by `0.2`.
-#
-# Sohrab Towfighi 2020
-#
+'''
+ This script wraps around `residency_match.py`, runs several sets of 
+ simulations, and then saves the results to files.
+
+ Each set of simulations is described using a file name and a corresponding 
+ alias, which is a name used to describe the simulation set in the plot we 
+ generate using `make_plots.py`.
+
+ Sohrab Towfighi 2020
+'''
 import os
 import sys
 import pdb
@@ -29,12 +22,25 @@ except ImportError:
             return pbs.Command(attr)
     sh = Sh()
 
-files = ["10_2_0point2.csv", 
-         "2_2_0point2.csv", 
-         "20_2_0point2.csv", 
-         "10_2_10.csv", 
-         "10_4_0point2.csv", 
-         "10_1_0point2.csv"]
+# Here, we list the files which will be generated. 
+# The naming convention is that the filename specifies the values used in the 
+# simulations.
+# Parameter values are separated by underscores in the filename.
+# For example, 10_2_5.csv
+# details the case where there are `10` interviews per residency spot, 
+# applicants apply to all programs in `2` specialties, and the probability 
+# distribution determining specialty preference has noise equal to number of 
+# spots in a given specialty times `5`.
+
+files = ["10_2_5.csv", 
+         "2_2_5.csv", 
+         "20_2_5.csv", 
+         "10_2_0point1.csv", 
+         "10_4_5.csv", 
+         "10_1_5.csv"]
+         
+# for each file, there is a corresponding human-readable alias which is used 
+# when generating the plots 
 aliases = ['Baseline', 
            'Two interviews\nper spot',
            'Twenty interviews\nper spot', 
@@ -54,14 +60,17 @@ if __name__ == '__main__':
         args = file.split('_')
         n_interviews_per_spot = int(args[0])
         n_spec_per_applicant = int(args[1])
-        denominator_variance_specialty_choice = args[2]
-        denominator_variance_specialty_choice = denominator_variance_specialty_choice[:-4]
-        if denominator_variance_specialty_choice == '0point2':
-            denominator_variance_specialty_choice = 0.2
+        specialty_choice_stddev_multiplier = args[2]
+        specialty_choice_stddev_multiplier = specialty_choice_stddev_multiplier[:-4]
+        if specialty_choice_stddev_multiplier == '0point1':
+            specialty_choice_stddev_multiplier = 0.1
         else:
-            denominator_variance_specialty_choice = float(denominator_variance_specialty_choice)
-        sh.python3('residency_match.py', '-n_interviews_per_spot', n_interviews_per_spot, 
-                                         '-n_spec_per_applicant', n_spec_per_applicant, 
-                                         '-denominator_variance_specialty_choice', denominator_variance_specialty_choice, 
+            specialty_choice_stddev_multiplier = float(specialty_choice_stddev_multiplier)
+        sh.python3('residency_match.py', '-n_interviews_per_spot', 
+                                         n_interviews_per_spot, 
+                                         '-n_spec_per_applicant', 
+                                         n_spec_per_applicant, 
+                                         '-specialty_choice_stddev_multiplier', 
+                                         specialty_choice_stddev_multiplier, 
                                          '-n_runs', n_runs, 
                                          file, _fg=True)

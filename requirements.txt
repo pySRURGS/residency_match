@@ -6,6 +6,5 @@ matplotlib==3.2.0
 numpy==1.18.1
 pandas==1.0.1
 scipy==1.4.1
-python-coveralls==2.9.3
-pytest==5.1.1
-pytest-cov==2.7.1
+sh==1.12.14
+pbs==0.110
