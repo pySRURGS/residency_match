@@ -34,3 +34,7 @@ You can run a quick run of the entire process by running `python3 test.py`, whic
 ## License
 
 This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) file for details
+
+## Contributing / Getting Help
+
+Feel free to make an issue and we can discuss.
