@@ -36,7 +36,7 @@ The manual for its command line interface's usage can be generated using `python
 ```
 usage: residency_match.py [-h] [-n_interviews_per_spot N_INTERVIEWS_PER_SPOT]
                           [-n_spec_per_applicant N_SPEC_PER_APPLICANT]
-                          [-denominator_variance_specialty_choice DENOMINATOR_VARIANCE_SPECIALTY_CHOICE]
+                          [-specialty_choice_stddev_multiplier SPECIALTY_CHOICE_STDDEV_MULTIPLIER]
                           [-n_runs N_RUNS]
                           output_file
 
@@ -46,16 +46,17 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -n_interviews_per_spot N_INTERVIEWS_PER_SPOT
-                        the number of interviews for each residency spot
+                        The number of interviews for each residency spot.
                         (default: 10)
   -n_spec_per_applicant N_SPEC_PER_APPLICANT
-                        the number of specialties to which applicants apply
+                        The number of specialties to which applicants apply.
                         (default: 2)
-  -denominator_variance_specialty_choice DENOMINATOR_VARIANCE_SPECIALTY_CHOICE
-                        a value which determines variability in applicants'
-                        specialty choice. smaller values mean more variance.
-                        (default: 0.2)
-  -n_runs N_RUNS        the number of repetitions in this set of simulations
+  -specialty_choice_stddev_multiplier SPECIALTY_CHOICE_STDDEV_MULTIPLIER
+                        A number value which determines variability in
+                        applicants' specialty choice. Larger values mean more
+                        variability. (default: 5)
+  -n_runs N_RUNS        The number of repetitions in this set of simulations.
+                        (default: 10)
 ```
 
 ## Community

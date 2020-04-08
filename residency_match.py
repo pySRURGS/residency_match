@@ -212,18 +212,18 @@ if __name__ == '__main__':
     parser.add_argument("-n_interviews_per_spot", 
                         type=int,
                         default=10, 
-                        help="the number of interviews for each residency spot")
+                        help="The number of interviews for each residency spot.")
     parser.add_argument("-n_spec_per_applicant", 
                         type=int,
                         default=2, 
-                        help="the number of specialties to which applicants apply")
+                        help="The number of specialties to which applicants apply.")
     parser.add_argument("-specialty_choice_stddev_multiplier", 
                         default=5,
-                        help="a number value which determines variability in applicants' specialty choice. smaller values mean more variance.")
+                        help="A number value which determines variability in applicants' specialty choice. Larger values mean more variability.")
     parser.add_argument("-n_runs", 
                         type=int, 
                         default=10, 
-                        help="the number of repetitions in this set of simulations")
+                        help="The number of repetitions in this set of simulations.")
     parser.add_argument("output_file", help="the file to append the results of the run")           
     if len(sys.argv) < 2:
         parser.print_usage()
