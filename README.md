@@ -10,10 +10,6 @@ This software simulates the medical residency match. It does so by spawning 10 r
 
 The main script is `residency_match.py`. Download the repository and run the computations using python3.6 via a terminal.
 
-### Prerequisites
-
-You can install the prerequisite packages with pip
-
 ### Installing
 
 Clone the repo then install the prerequisites. The software is designed to work for Ubuntu Linux 18.04, but should work on Mac OSX and also Windows if you are using git bash. 
