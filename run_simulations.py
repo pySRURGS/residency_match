@@ -29,8 +29,8 @@ except ImportError:
 # For example, 10_2_5.csv
 # details the case where there are `10` interviews per residency spot, 
 # applicants apply to all programs in `2` specialties, and the probability 
-# distribution determining specialty preference has noise equal to number of 
-# spots in a given specialty times `5`.
+# distribution determining specialty preference has noise standard deviation 
+# equal to number of spots in a given specialty times `5`.
 
 files = ["10_2_5.csv", 
          "2_2_5.csv", 
