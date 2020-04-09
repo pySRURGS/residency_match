@@ -72,4 +72,4 @@ This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) 
 
 ## Acknowledgements
 
-The icon is in the public domain and is from the Noun Project: ![Link](https://commons.wikimedia.org/wiki/File:Public_health_icon_-_Noun_Project_6435.svg)
+The icon is in the public domain and is from the Noun Project: [Link](https://commons.wikimedia.org/wiki/File:Public_health_icon_-_Noun_Project_6435.svg)
